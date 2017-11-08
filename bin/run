@@ -1,3 +1,4 @@
+require 'pry'
 require 'sqlite3'
 
 require_relative "../lib/interactive_record.rb"
@@ -9,6 +10,14 @@ puts "song name: " + song.name
 puts "song album: " + song.album
 song.save
 
-puts Song.find_by_name("Hello")
+song2 = Song.new(name: "asdf", album: "fdsa")
+puts "song name: " + song2.name
+puts "song album: " + song2.album
+song2.save
 
-# DB[:conn].execute("SELECT * FROM songs")
+puts Song.find_by_name("Hello")
+puts Song.column_names
+puts song2.values_for_insert
+puts DB[:conn].execute("SELECT * FROM songs")
+
+binding.pry
